@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- vamos a definir la vista lista (Tree)-->
+    <record id="view_gestion_persona_tree" model="ir.ui.view">
+        <field name="name">gestion.persona.tree</field>
+        <field name="model">gestion.persona</field>
+        <field name="arch" type="xml">
+            <tree string="Lista de personas">
+                <field name="name"/>
+                <field name="lastname"/>
+                <field name="age"/>
+                <field name="grade"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+    <!-- vamos a definir la vista formulario (Form)-->
+    <record id="view_gestion_persona_form" model="ir.ui.view">
+        <field name="name">gestion.persona.form</field>
+        <field name="model">gestion.persona</field>
+        <field name="arch" type="xml">
+            <form string="Formulario de persona">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="lastname"/>
+                        <field name="age"/>
+                        <field name="grade"/>
+                        <field name="active"/>
+                    </group>
+                    <group>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
