@@ -40,7 +40,7 @@
      <template id="web_persona_detail" name="web persona Detail">
         <t t-call="website.layout">
             <div class="container mt-4">
-                <a href="/gestion_equipo" class="btn btn-link">Volver</a>
+                <a href="/equipo" class="btn btn-link">Volver</a>
                 <h1 class="mt-2" t-esc="persona.name"/>
                 <ul class="list-group mt-3">
                     <li class="list-group-item"><strong>Nombre:</strong> <t t-esc="persona.name or ''"></t></li>
@@ -48,8 +48,9 @@
                     <li class="list-group-item"><strong>Edad:</strong> <t t-esc="persona.age or ''"></t></li>
                     <li class="list-group-item"><strong>Grado:</strong> <t t-esc="persona.grade or ''"></t></li>
                     <li class="list-group-item"><strong>Descripción:</strong> <t t-esc="persona.description or ''"></t></li>
+                    <p></p>
                 </ul>
             </div>
         </t>
-     </template>
+    </template>
 </odoo>
