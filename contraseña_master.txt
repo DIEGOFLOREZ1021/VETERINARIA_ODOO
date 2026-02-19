@@ -1,0 +1,4 @@
+Master password: 54zr-nqah-627i
+Database Name: gestion_veterinaria
+Email: admin@veterinaria.com
+Contraseña: perrolover
