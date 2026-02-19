@@ -6,12 +6,8 @@
          <field name="res_model">gestion.cita</field>
          <field name="view_mode">tree,form</field>
       </record>
-      <menuitem id="menu_gestion_cita_root"
-         name="Veterinaria"
-         sequence="10" />
       <menuitem id="menu_gestion_cita"
          name="Gestión de Citas"
-         parent="menu_gestion_cita_root"
          action="action_gestion_cita"
          sequence="10" />
    </data>

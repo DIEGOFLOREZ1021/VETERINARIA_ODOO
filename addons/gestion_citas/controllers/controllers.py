@@ -1,22 +1,14 @@
-# -*- coding: utf-8 -*-
-# from odoo import http
+from odoo import http
+from odoo.http import request
 
+class GestionCitasController(http.Controller):
 
-# class GestionCitas(http.Controller):
-#     @http.route('/gestion_citas/gestion_citas', auth='public')
-#     def index(self, **kw):
-#         return "Hello, world"
+    @http.route('/citas', type='http', auth='public', website=True)
+    def citas_list(self, **kwargs):
+        citas = request.env['gestion.cita'].sudo().search([])
+        return request.render('gestion_citas.web_citas_list', {'citas': citas})
 
-#     @http.route('/gestion_citas/gestion_citas/objects', auth='public')
-#     def list(self, **kw):
-#         return http.request.render('gestion_citas.listing', {
-#             'root': '/gestion_citas/gestion_citas',
-#             'objects': http.request.env['gestion_citas.gestion_citas'].search([]),
-#         })
-
-#     @http.route('/gestion_citas/gestion_citas/objects/<model("gestion_citas.gestion_citas"):obj>', auth='public')
-#     def object(self, obj, **kw):
-#         return http.request.render('gestion_citas.object', {
-#             'object': obj
-#         })
-
+    @http.route('/citas/<int:cita_id>', type='http', auth='public', website=True)
+    def cita_detail(self, cita_id, **kwargs):
+        cita = request.env['gestion.cita'].sudo().browse(cita_id)
+        return request.render('gestion_citas.web_cita_detail', {'cita': cita})

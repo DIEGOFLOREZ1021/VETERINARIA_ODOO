@@ -20,6 +20,7 @@ Esta aplicacion puedes gestionar a que hora, con quien y un poco de informacion 
         'views/gestion_cita_views.xml',
         'views/gestion_cita_search.xml',
         'views/gestion_cita_menu.xml',
+        'views/template.xml',
     ],
     'installable': True,
     'application': True,

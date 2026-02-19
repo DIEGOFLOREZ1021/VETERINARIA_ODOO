@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- LISTADO DE CITAS -->
+        <template id="web_citas_list" name="Web Citas List">
+            <t t-call="website.layout">
+                <div class="container mt-4">
+                    <h1>Citas Veterinarias</h1>
+
+                    <!-- Cards de citas -->
+                    <div class="row mt-3">
+                        <t t-foreach="citas" t-as="c">
+                            <div class="col-12 col-md-6 col-lg-4 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <t t-esc="c.cname"/>
+                                        </h5>
+                                        <p class="card-text">
+                                            <strong>Animal: </strong>
+                                            <t t-esc="c.aname or ''"/><br/>
+                                            <strong>Veterinario: </strong>
+                                            <t t-esc="c.vname or ''"/><br/>
+                                            <strong>Fecha y Hora: </strong>
+                                            <t t-esc="c.timedate"/><br/>
+                                            <strong>Motivo: </strong>
+                                            <t t-esc="c.motive or ''"/><br/>
+                                            <strong>Estado: </strong>
+                                            <t t-esc="c.state or ''"/>
+                                        </p>
+                                        <a class="btn btn-primary"
+                                           t-att-href="'/citas/%s' % c.id">
+                                            Ver detalle
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <!-- DETALLE DE LA CITA -->
+        <template id="web_cita_detail" name="Web Cita Detail">
+            <t t-call="website.layout">
+                <div class="container mt-4">
+                    <a href="/citas" class="btn btn-link mb-3">
+                        Volver
+                    </a>
+
+                    <h1>Cita de <t t-esc="cita.cname"/></h1>
+
+                    <!-- Datos del Cliente -->
+                    <h4 class="mt-4">Datos del Cliente</h4>
+                    <ul class="list-group mt-2">
+                        <li class="list-group-item">
+                            <strong>Nombre:</strong>
+                            <t t-esc="cita.cname"/>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Identificación:</strong>
+                            <t t-esc="cita.cid"/>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Teléfono:</strong>
+                            <t t-esc="cita.cphonenum"/>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Correo:</strong>
+                            <t t-esc="cita.cemail or ''"/>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Dirección:</strong>
+                            <t t-esc="cita.caddress"/>
+                        </li>
+                    </ul>
+
+                    <!-- Datos del Animal -->
+                    <h4 class="mt-4">Datos del Animal</h4>
+                    <ul class="list-group mt-2">
+                        <li class="list-group-item">
+                            <strong>Nombre:</strong>
+                            <t t-esc="cita.aname"/>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Identificación:</strong>
+                            <t t-esc="cita.aid"/>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Peso:</strong>
+                            <t t-esc="cita.aweight"/> kg
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Fecha de Nacimiento:</strong>
+                            <t t-esc="cita.abirthdate"/>
+                        </li>
+                    </ul>
+
+                    <!-- Datos de la Cita -->
+                    <h4 class="mt-4">Datos de la Cita</h4>
+                    <ul class="list-group mt-2">
+                        <li class="list-group-item">
+                            <strong>Veterinario asignado:</strong>
+                            <t t-esc="cita.vname"/>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Fecha y Hora:</strong>
+                            <t t-esc="cita.timedate"/>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Motivo:</strong>
+                            <t t-esc="cita.motive"/>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Estado:</strong>
+                            <t t-esc="cita.state"/>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>¿Cita solicitada por el cliente?:</strong>
+                            <t t-esc="'Sí' if cita.wascalled else 'No'"/>
+                        </li>
+                    </ul>
+
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>
