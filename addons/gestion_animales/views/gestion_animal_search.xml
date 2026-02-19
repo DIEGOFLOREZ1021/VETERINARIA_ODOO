@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_gestion_animal_search" model="ir.ui.view">
+            <field name="name">gestion.animal.search</field>
+            <field name="model">gestion.animal</field>
+            <field name="arch" type="xml">
+                <search string="Buscar animales">
+
+                    <field name="name" string="Nombre del animal"/>
+                    <field name="owner" string="Nombre del dueño"/>
+                    <field name="birth_date" string="Fecha de nacimiento"/>
+
+                    <separator/>
+                    <filter string="Activos"
+                            name="active_true"
+                            domain="[('active', '=', True)]"/>
+                    <filter string="Inactivos"
+                            name="active_false"
+                            domain="[('active', '=', False)]"/>
+
+                    <separator/>
+                    <filter string="Sano"
+                            name="health_healthy"
+                            domain="[('health_state', '=', 'healthy')]"/>
+                    <filter string="Enfermo"
+                            name="health_sick"
+                            domain="[('health_state', '=', 'sick')]"/>
+                    <filter string="En tratamiento"
+                            name="health_treatment"
+                            domain="[('health_state', '=', 'treatment')]"/>
+                    <filter string="Crítico"
+                            name="health_critical"
+                            domain="[('health_state', '=', 'critical')]"/>
+
+                    <separator/>
+                    <group expand="0" string="Agrupar por">
+                        <filter string="Raza"
+                                name="group_breed"
+                                context="{'group_by': 'breed'}"/>
+                    </group>
+                    <group expand="0" string="Agrupar por">
+                        <filter string="Especie"
+                                name="group_species"
+                                context="{'group_by': 'species'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+    </data>
+</odoo>
