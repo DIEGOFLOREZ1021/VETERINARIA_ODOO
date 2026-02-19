@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_gestion_persona_search" model="ir.ui.view">
+        <field name="name">gestion.persona.search</field>
+        <field name="model">gestion.persona</field>
+        <field name="arch" type="xml">
+            <search string="Buscar persona">
+                <field name="name"/>
+                <field name="lastname"/>
+                <separator/>
+                    <filter string="Edad > 18" name="edad_gt_18" domain="[('age', '&gt;', 18)]"/>
+                    <filter string="Edad ≤ 18" name="edad_le_18" domain="[('age', '&lt;=', 18)]"/>
+                <separator/>
+                <group expand="0" string="Agrupar por">
+                    <filter string="activos" name="group_by_active" context="{'group_by':'active'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>
