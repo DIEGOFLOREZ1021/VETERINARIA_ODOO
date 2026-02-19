@@ -1,24 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-<!--
-        <template id="listing">
-          <ul>
-            <li t-foreach="objects" t-as="object">
-              <a t-attf-href="#{ root }/objects/#{ object.id }">
-                <t t-esc="object.display_name"/>
-              </a>
-            </li>
-          </ul>
-        </template>
-        <template id="object">
-          <h1><t t-esc="object.display_name"/></h1>
-          <dl>
-            <t t-foreach="object._fields" t-as="field">
-              <dt><t t-esc="field"/></dt>
-              <dd><t t-esc="object[field]"/></dd>
+        <!-- LISTADO DE ANIMALES -->
+        <template id="web_animales_list" name="Web Animales List">
+            <t t-call="website.layout">
+                <div class="container mt-4">
+                    <h1>Animales</h1>
+
+                    <!-- Cards de animales -->
+                    <div class="row mt-3">
+                        <t t-foreach="animales" t-as="a">
+                            <div class="col-12 col-md-6 col-lg-4 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <t t-esc="a.name"/>
+                                        </h5>
+                                        <p class="card-text">
+                                            <strong>Especie: </strong>
+                                            <t t-esc="a.species or ''"/><br/>
+                                            <strong>Raza: </strong>
+                                            <t t-esc="a.breed or ''"/><br/>
+                                            <strong>Sexo: </strong>
+                                            <t t-esc="dict(a._fields['sex'].selection).get(a.sex)"/><br/>
+                                            <strong>Dueño: </strong>
+                                            <t t-esc="a.owner"/>
+                                        </p>
+                                        <a class="btn btn-primary"
+                                           t-att-href="'/animales/%s' % a.id">
+                                            Ver detalle
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </div>
             </t>
-          </dl>
         </template>
--->
+
+        <!-- DETALLE DEL ANIMAL -->
+        <template id="web_animal_detail" name="Web Animal Detail">
+            <t t-call="website.layout">
+                <div class="container mt-4">
+                    <a href="/animales" class="btn btn-link mb-3">
+                        Volver
+                    </a>
+
+                    <h1 t-esc="animal.name"/>
+
+                    <ul class="list-group mt-3">
+                        <li class="list-group-item">
+                            <strong>Código / Chip:</strong>
+                            <t t-esc="animal.code"/>
+                        </li>
+
+                        <li class="list-group-item">
+                            <strong>Especie:</strong>
+                            <t t-esc="animal.species or ''"/>
+                        </li>
+
+                        <li class="list-group-item">
+                            <strong>Raza:</strong>
+                            <t t-esc="animal.breed or ''"/>
+                        </li>
+
+                        <li class="list-group-item">
+                            <strong>Sexo:</strong>
+                            <t t-esc="dict(animal._fields['sex'].selection).get(animal.sex)"/>
+                        </li>
+
+                        <li class="list-group-item">
+                            <strong>Fecha de nacimiento:</strong>
+                            <t t-esc="animal.birth_date"/>
+                        </li>
+
+                        <li class="list-group-item">
+                            <strong>Edad:</strong>
+                            <t t-esc="animal.age"/> años
+                        </li>
+
+                        <li class="list-group-item">
+                            <strong>Peso:</strong>
+                            <t t-esc="animal.weight"/> kg
+                        </li>
+
+                        <li class="list-group-item">
+                            <strong>Altura:</strong>
+                            <t t-esc="animal.height"/> cm
+                        </li>
+
+                        <li class="list-group-item">
+                            <strong>Estado de salud:</strong>
+                            <t t-esc="dict(animal._fields['health_state'].selection).get(animal.health_state)"/>
+                        </li>
+
+                        <li class="list-group-item">
+                            <strong>Esterilizado:</strong>
+                            <t t-esc="'Sí' if animal.sterilized else 'No'"/>
+                        </li>
+
+                        <li class="list-group-item">
+                            <strong>Última vacunación:</strong>
+                            <t t-esc="animal.last_vaccine_date"/>
+                        </li>
+
+                        <li class="list-group-item">
+                            <strong>Notas médicas:</strong><br/>
+                            <t t-esc="animal.notes_medical or ''"/>
+                        </li>
+                    </ul>
+                </div>
+            </t>
+        </template>
     </data>
 </odoo>

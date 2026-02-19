@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_gestion_animal_tree" model="ir.ui.view">
+        <field name="name">gestion.animal.tree</field>
+        <field name="model">gestion.animal</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="species"/>
+                <field name="breed"/>
+                <field name="age"/>
+                <field name="health_state"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Definimos la vista formulario (Form)-->
+    <record id="view_gestion_animal_form" model="ir.ui.view">
+            <field name="name">gestion.animal.form</field>
+            <field name="model">gestion.animal</field>
+            <field name="arch" type="xml">
+                <form string="Animal">
+                    <sheet>
+                        <!-- Título -->
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" placeholder="Nombre del animal"/>
+                            </h1>
+                        </div>
+
+                        <!-- IDENTIFICACIÓN -->
+                        <group string="Identificación" col="4">
+                            <field name="code"/>
+                            <field name="active"/>
+                        </group>
+
+                        <!-- CLASIFICACIÓN -->
+                        <group string="Clasificación" col="4">
+                            <field name="species"/>
+                            <field name="breed"/>
+                            <field name="sex"/>
+                            <field name="color"/>
+                        </group>
+
+                        <!-- DATOS BIOLÓGICOS -->
+                        <group string="Datos biológicos" col="4">
+                            <field name="birth_date"/>
+                            <field name="age"/>
+                            <field name="weight"/>
+                            <field name="height"/>
+                        </group>
+
+                        <!-- PROPIEDAD -->
+                        <group string="Responsables" col="4">
+                            <field name="owner"/>
+                            <field name="veterinarian_id"/>
+                        </group>
+
+                        <!-- SALUD -->
+                        <group string="Salud" col="4">
+                            <field name="health_state"/>
+                            <field name="sterilized"/>
+                            <field name="last_vaccine_date"/>
+                        </group>
+
+                        <!-- NOTAS MÉDICAS -->
+                        <group string="Notas médicas">
+                            <field name="notes_medical" nolabel="1"/>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
