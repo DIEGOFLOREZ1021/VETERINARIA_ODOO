@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_gestion_cita_search" model="ir.ui.view">
+        <field name="name">gestion.cita.search</field>
+        <field name="model">gestion.cita</field>
+        <field name="arch" type="xml">
+            <search string="Buscar Citas Veterinarias">
+                <field name="cname" string="Cliente"/>
+                <field name="aname" string="Animal"/>
+                <field name="vname" string="Veterinario"/>
+                <field name="state" string="Estado"/>
+                <separator/>
+                <filter string="Citas Activas"
+                        name="active_citas"
+                        domain="[('state','!=','Cancelada')]"/>
+                <filter string="Canceladas"
+                        name="canceladas"
+                        domain="[('state','=','Cancelada')]"/>
+                <separator/>
+                <filter string="Citas de Hoy"
+                        name="today"
+                        domain="[('timedate','&gt;=', context_today())]"/>
+                <filter string="Próximas Citas"
+                        name="future"
+                        domain="[('timedate','&gt;', context_today())]"/>
+                <separator/>
+                <group expand="0" string="Agrupar por">
+                    <filter string="Veterinario"
+                            name="group_vet"
+                            context="{'group_by':'vname'}"/>
+                    <filter string="Estado"
+                            name="group_state"
+                            context="{'group_by':'state'}"/>
+                    <filter string="Fecha"
+                            name="group_date"
+                            context="{'group_by':'timedate'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

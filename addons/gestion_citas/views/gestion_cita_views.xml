@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_gestion_cita_tree" model="ir.ui.view">
+        <field name="name">gestion.cita.tree</field>
+        <field name="model">gestion.cita</field>
+        <field name="arch" type="xml">
+            <tree string="Citas Veterinarias">
+                <field name="cname"/>
+                <field name="aname"/>
+                <field name="vname"/>
+                <field name="timedate"/>
+                <field name="state"/>
+                <field name="wascalled"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_gestion_cita_form" model="ir.ui.view">
+        <field name="name">gestion.cita.form</field>
+        <field name="model">gestion.cita</field>
+        <field name="arch" type="xml">
+            <form string="Cita Veterinaria">
+                <sheet>
+
+                    <group string="Datos del Cliente">
+                        <field name="cname"/>
+                        <field name="cid"/>
+                        <field name="cphonenum"/>
+                        <field name="cemail"/>
+                        <field name="caddress"/>
+                    </group>
+
+                    <group string="Datos del Animal">
+                        <field name="aname"/>
+                        <field name="aweight"/>
+                        <field name="abirthdate"/>
+                        <field name="aid"/>
+                    </group>
+
+                    <group string="Datos de la Cita">
+                        <field name="vname"/>
+                        <field name="timedate"/>
+                        <field name="motive"/>
+                        <field name="state"/>
+                        <field name="wascalled"/>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>
