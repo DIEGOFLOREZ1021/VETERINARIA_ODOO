@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- aqui definimos template Qweb para la lista del equipo-->
+    <template id="web_equipo_list" name="web Equipo List">
+        <t t-call="website.layout">
+            <div class="container mt-4">
+                <h1>Equipo</h1>
+
+                <!--Cards de equipo-->
+                <div class="row mt-3">
+                    <!-- creamos un bucle-->
+                     <!-- Cada producto, se guarda en un p-->
+                    <t t-foreach="equipo" t-as="p">
+                        <div class="col-12 col-6 col-lg-4 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <!--Aqui ponemos el nombre de la persona-->
+                                    <!--Accedemos a la variable con p.name-->
+                                    <h5 class="card-title"><t t-esc="p.name"/></h5>
+                                    <p class="card-text">
+                                        <!-- or '' evita errores si el campo esta vacio-->
+                                        <strong>Apellido:</strong> <t t-esc="p.lastname or ''"/><br/>
+                                        <strong>Edad:</strong> <t t-esc="p.age or ''"/><br/>
+                                        <strong>Grado:</strong> <t t-esc="p.grade or ''"/><br/>
+                                    </p>
+                                    <!-- genera URLS como/equipo/3-->
+                                     <a class="btn btn-primary" t-att-href="'/equipo/%s' % p.id">
+                                        Ver Detalles
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- aqui definimos template Qweb para el detalle de cada persona-->
+     <template id="web_persona_detail" name="web persona Detail">
+        <t t-call="website.layout">
+            <div class="container mt-4">
+                <a href="/equipo" class="btn btn-link">Volver</a>
+                <h1 class="mt-2" t-esc="persona.name"/>
+                <ul class="list-group mt-3">
+                    <li class="list-group-item"><strong>Nombre:</strong> <t t-esc="persona.name or ''"></t></li>
+                    <li class="list-group-item"><strong>Apellido:</strong> <t t-esc="persona.lastname or ''"></t></li>
+                    <li class="list-group-item"><strong>Edad:</strong> <t t-esc="persona.age or ''"></t></li>
+                    <li class="list-group-item"><strong>Grado:</strong> <t t-esc="persona.grade or ''"></t></li>
+                    <li class="list-group-item"><strong>Descripción:</strong> <t t-esc="persona.description or ''"></t></li>
+                    <p></p>
+                </ul>
+            </div>
+        </t>
+    </template>
+</odoo>

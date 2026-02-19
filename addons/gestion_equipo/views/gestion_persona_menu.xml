@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ACCIÓN que abre la lista y formulario -->
+    <record id="action_gestion_persona" model="ir.actions.act_window">
+        <field name="name">Personas</field>
+        <field name="res_model">gestion.persona</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- MENÚ PRINCIPAL -->
+    <menuitem id="menu_gestion_equipo_root"
+              name="Gestión de Equipo"
+              sequence="10"/>
+
+    <!-- SUBMENÚ -->
+    <menuitem id="menu_gestion_equipo_persona"
+              name="Personas"
+              parent="menu_gestion_equipo_root"
+              action="action_gestion_persona"
+              sequence="10"/>
+
+</odoo>
