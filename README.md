@@ -12,7 +12,7 @@ El objetivo principal es implementar un sistema de gestion que permita:
 
 - Administrar el personal de la clinica
 - Gestionar clientes y mascotas
-- Controlar productos y servicios veterinarios
+- Controlar servicios veterinarios
 - Integrar toda la informacion dentro del entorno Odoo
 - Aplicar buenas practicas de desarrollo de modulos
 
